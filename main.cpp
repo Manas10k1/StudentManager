@@ -16,7 +16,8 @@ int main(){
         cout << "5. Search by Name\n";
         cout << "6. Search by Roll Number\n";
         cout << "7. Sort by Roll Number\n";
-        cout << "0. Exit\n";
+        cout << "8. Binary Search by Roll Number\n";
+        cout << "9. Exit\n";
         cout << "Enter your choice: ";
         Student::checkInput(choice);
 
@@ -51,7 +52,11 @@ int main(){
                 sm.sortStudents();
                 break;
 
-            case 0:
+            case 8:
+                sm.binarySearch();
+                break;
+            
+                case 9:
                 cout << "Program Exited.\n";
                 break;
 
@@ -59,7 +64,7 @@ int main(){
                 cout << "Invalid Choice!\n";
         }
 
-    } while (choice != 0);
+    } while (choice != 9);
 
     return 0;
 }

@@ -8,7 +8,7 @@ class StudentManager{
         Student* students;
         int size;
         int count=0;
-
+        bool isSorted = false;
     public:
         StudentManager();
         void addStudent();
@@ -18,6 +18,7 @@ class StudentManager{
         void nameSearch();
         void rollSearch();
         void sortStudents();
+        void binarySearch();
         ~StudentManager();
 
 };

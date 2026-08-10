@@ -21,6 +21,7 @@ void StudentManager::addStudent(){
     else{
         students[count].input();
         count++;
+        isSorted = false;
     }
 }
 
@@ -46,11 +47,17 @@ void StudentManager::insert(){
         }
         students[index-1].input();
         count++;
+        isSorted = false;
     }
 }
 
 void StudentManager::deletEle(){
     int index;
+    if(count == 0){
+        cout << "No students to delete.\n";
+        return;
+    }
+    
     do{
         cout << "Enter Index to Delete: ";
         Student::checkInput(index);
@@ -60,6 +67,7 @@ void StudentManager::deletEle(){
         students[i]=students[i+1];
     }
     count--;
+    isSorted = false;
 
 }
 
@@ -69,6 +77,11 @@ void StudentManager::nameSearch(){
     cout << "Enter name to search: ";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, searchName);
+
+    if(count == 0){
+        cout << "No students available.\n";
+        return;
+    }
 
     for(int i = 0; i < count; i++){
         if(students[i].getname() == searchName){
@@ -88,6 +101,11 @@ void StudentManager::rollSearch(){
     cout << "Enter Roll number to search: ";
     Student::checkInput(searchRoll);
 
+    if(count == 0){
+        cout << "No students available.\n";
+        return;
+    }
+    
     for(int i = 0; i < count; i++){
         if(students[i].getRoll() == searchRoll){
             cout << "Found at index " << i+1 <<endl;
@@ -100,7 +118,7 @@ void StudentManager::rollSearch(){
     }
 }
 
-void StudentManager::sortStudents() {
+void StudentManager::sortStudents(){
     for (int i = 0; i < count - 1; i++) {
         int minIndex = i;
 
@@ -118,6 +136,44 @@ void StudentManager::sortStudents() {
     }
 
     cout << "Students sorted successfully.\n";
+    isSorted = true;
+}
+
+void StudentManager::binarySearch(){
+    
+    if(count == 0){
+        cout << "No students available.\n";
+        return;
+    }
+
+    if(isSorted == true){
+        int start = 0;
+        int end = count -1;
+        int searchRoll;
+        cout << "Enter Roll number to search: ";
+        Student::checkInput(searchRoll);
+        while(start <=end){
+            int mid = (start + end)/2;
+            if(searchRoll == students[mid].getRoll()){
+                cout << "Found at index " << mid + 1 << endl;
+                students[mid].display();
+                return;
+            }
+
+            else if(searchRoll < students[mid].getRoll()){
+                end = mid - 1;
+            }
+
+            else {
+                start = mid + 1;
+            }
+        }
+        cout << "NO SEARCH RESULTS" << endl;
+    }
+
+    else {
+        cout << "Use sort feature 1st" << endl;
+    }
 }
 
 StudentManager::~StudentManager() {
