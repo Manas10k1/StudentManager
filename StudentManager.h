@@ -14,6 +14,7 @@ class StudentManager{
         void addStudent();
         void displayAll();
         void insert();
+        void updateStudent();
         void deletEle();
         void nameSearch();
         void rollSearch();

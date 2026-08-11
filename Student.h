@@ -14,6 +14,9 @@ class Student{
         static void checkInput(int &input);
         void input();
         void display();
+        void setName(std::string newName);
+        void setAge(int newAge);
+        void setRoll(int newRoll);
         std::string getname() const;
         int getRoll() const;
 };

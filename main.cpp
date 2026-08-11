@@ -12,12 +12,13 @@ int main(){
         cout << "1. Add Student\n";
         cout << "2. Display All Students\n";
         cout << "3. Insert Student\n";
-        cout << "4. Delete Student\n";
-        cout << "5. Search by Name\n";
-        cout << "6. Search by Roll Number\n";
-        cout << "7. Sort by Roll Number\n";
-        cout << "8. Binary Search by Roll Number\n";
-        cout << "9. Exit\n";
+        cout << "4. Update Student\n";
+        cout << "5. Delete Student\n";
+        cout << "6. Search by Name\n";
+        cout << "7. Search by Roll Number\n";
+        cout << "8. Sort by Roll Number\n";
+        cout << "9. Binary Search by Roll Number\n";
+        cout << "0. Exit\n";
         cout << "Enter your choice: ";
         Student::checkInput(choice);
 
@@ -37,26 +38,30 @@ int main(){
                 break;
 
             case 4:
+                sm.updateStudent();
+                break;
+            
+            case 5:
                 sm.deletEle();
                 break;
 
-            case 5:
+            case 6:
                 sm.nameSearch();
                 break;
 
-            case 6:
+            case 7:
                 sm.rollSearch();
                 break;
 
-            case 7:
+            case 8:
                 sm.sortStudents();
                 break;
 
-            case 8:
+            case 9:
                 sm.binarySearch();
                 break;
             
-                case 9:
+            case 0:
                 cout << "Program Exited.\n";
                 break;
 
@@ -64,7 +69,7 @@ int main(){
                 cout << "Invalid Choice!\n";
         }
 
-    } while (choice != 9);
+    } while (choice != 0);
 
     return 0;
 }

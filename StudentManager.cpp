@@ -26,6 +26,11 @@ void StudentManager::addStudent(){
 }
 
 void StudentManager::displayAll(){
+    if(count == 0){
+        cout << "No students available.\n";
+        return;
+    }
+    
     for(int i = 0; i < count; i++){
     students[i].display();
     }
@@ -51,6 +56,58 @@ void StudentManager::insert(){
     }
 }
 
+void StudentManager::updateStudent(){
+
+    if(count == 0){
+        cout << "No students available.\n";
+        return;
+    }
+
+    int index;
+    do{
+        cout << "Enter Index to input: ";
+        Student::checkInput(index);
+    } while(index < 1 || index > count);
+    int choice;
+    cout << "Update NAME(1)\n" << "AGE(2)\n" << "ROLL NUMBER(3)\n";
+    cin >> choice;
+    
+    switch(choice){
+        case 1:{
+            cout << "Enter Name of Student: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            std::string newName;
+            getline(cin, newName);
+            students[index-1].setName(newName);
+            break;
+        }
+        
+        case 2:{
+            int newAge;
+            do{
+                cout << "Enter age of Student: ";
+                Student::checkInput(newAge);
+            } while(newAge < 1);
+            
+            students[index-1].setAge(newAge);
+            break;
+        }
+        case 3:{
+            int newRoll;
+            do{
+                cout << "Enter Roll number of Student: ";
+                Student::checkInput(newRoll);
+            } while(newRoll < 1);
+            students[index-1].setRoll(newRoll);
+            isSorted = false;
+            break;
+        }
+        default:
+            cout << "Invalid Choice! --- TRY AGAIN" <<endl;
+
+    }
+}
+
 void StudentManager::deletEle(){
     int index;
     if(count == 0){
@@ -73,15 +130,16 @@ void StudentManager::deletEle(){
 
 void StudentManager::nameSearch(){
     bool searcheck = false;
-    string searchName;
-    cout << "Enter name to search: ";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    getline(cin, searchName);
-
+    
     if(count == 0){
         cout << "No students available.\n";
         return;
     }
+
+    string searchName;
+    cout << "Enter name to search: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, searchName);
 
     for(int i = 0; i < count; i++){
         if(students[i].getname() == searchName){
@@ -90,21 +148,22 @@ void StudentManager::nameSearch(){
             searcheck = true;
         }
     }
-    if(searcheck !=true){
+    if(!searcheck){
         cout << "NO SEARCH RESULTS" << endl;
     }
 }
 
 void StudentManager::rollSearch(){
     bool searcheck = false;
-    int searchRoll;
-    cout << "Enter Roll number to search: ";
-    Student::checkInput(searchRoll);
-
+    
     if(count == 0){
         cout << "No students available.\n";
         return;
     }
+
+    int searchRoll;
+    cout << "Enter Roll number to search: ";
+    Student::checkInput(searchRoll);
     
     for(int i = 0; i < count; i++){
         if(students[i].getRoll() == searchRoll){
@@ -113,7 +172,7 @@ void StudentManager::rollSearch(){
             searcheck = true;
         }
     }
-    if(searcheck != true){
+    if(!searcheck){
         cout << "NO SEARCH RESULTS" << endl;
     }
 }

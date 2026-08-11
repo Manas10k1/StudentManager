@@ -45,6 +45,18 @@ void Student::display(){
     cout << "Roll Number: " << rollNum << endl;
 }
 
+void Student::setName(std::string newName){
+    name = newName;
+}
+
+void Student::setAge(int newAge){
+    age = newAge;
+}
+
+void Student::setRoll(int newRoll){
+    rollNum = newRoll;
+}
+
 std::string Student::getname() const{
     return name;
 }
@@ -52,4 +64,3 @@ std::string Student::getname() const{
 int Student::getRoll() const{
     return rollNum;
 }
-
