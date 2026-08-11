@@ -20,6 +20,7 @@ class StudentManager{
         void rollSearch();
         void sortStudents();
         void binarySearch();
+        void clearAll();
         ~StudentManager();
 
 };

@@ -235,6 +235,12 @@ void StudentManager::binarySearch(){
     }
 }
 
+void StudentManager::clearAll(){
+    cout << "All Data deleted" << endl;
+    count = 0;
+    isSorted = false;
+}
+
 StudentManager::~StudentManager() {
     delete[] students;
 }

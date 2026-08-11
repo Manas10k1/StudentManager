@@ -9,16 +9,17 @@ int main(){
 
     do {
         cout << "\n========== STUDENT MANAGEMENT SYSTEM V1 ==========\n";
-        cout << "1. Add Student\n";
-        cout << "2. Display All Students\n";
-        cout << "3. Insert Student\n";
-        cout << "4. Update Student\n";
-        cout << "5. Delete Student\n";
-        cout << "6. Search by Name\n";
-        cout << "7. Search by Roll Number\n";
-        cout << "8. Sort by Roll Number\n";
-        cout << "9. Binary Search by Roll Number\n";
-        cout << "0. Exit\n";
+        cout << "1.  Add Student\n";
+        cout << "2.  Display All Students\n";
+        cout << "3.  Insert Student\n";
+        cout << "4.  Update Student\n";
+        cout << "5.  Delete Student\n";
+        cout << "6.  Search by Name\n";
+        cout << "7.  Search by Roll Number\n";
+        cout << "8.  Sort by Roll Number\n";
+        cout << "9.  Binary Search by Roll Number\n";
+        cout << "10. Clear all\n";
+        cout << "0.  Exit\n";
         cout << "Enter your choice: ";
         Student::checkInput(choice);
 
@@ -61,6 +62,10 @@ int main(){
                 sm.binarySearch();
                 break;
             
+            case 10:
+                sm.clearAll();
+                break;
+
             case 0:
                 cout << "Program Exited.\n";
                 break;
